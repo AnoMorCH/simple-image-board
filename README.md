@@ -10,19 +10,29 @@ The project is divided in three parts: <strong>browser</strong>, <strong>back-en
 
 A <strong>front-end part</strong> of the project. Is built upon <a link="https://github.com/parcel-bundler/parcel">Parcel</a>. Uses HTML, CSS and native JS.
 
-##### Hints
+#### Hints
 
 1. To run the app locally use
+```bash
+cd browser
+npx parcel src/*.html
+```
+
+If there is a mistake, before debugging try to delete `browser/.parcel-cache`, `browser/.cache` and `browser/dist` folders.
+
+2. Please, note that running
+
+```bash
+cd browser
+npx parcel src/index.html
+```
+
+can sometimes to lead to a situation when some pages aren't uploaded in spite of the fact that the command above is commonly used in the docs.
+
+3. Also, running the app directly like this
+
 ```bash
 npx parcel browser/src/*.html
 ```
 
-If there is a mistake, before debugging try to delete `browser/.parcel-cache` and `browser/dist` folders.
-
-Please, note that running
-
-```bash
-npx parcel browser/src/index.html
-```
-
-can sometimes to lead to a situation when some pages aren't uploaded in spite of the fact that the command above is commonly used in the docs.
+can cause unexpected behavior.
