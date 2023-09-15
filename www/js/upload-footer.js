@@ -1,1 +1,0 @@
-$("footer").load("../html/support/footer.html")
