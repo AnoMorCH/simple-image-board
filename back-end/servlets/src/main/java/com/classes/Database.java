@@ -33,7 +33,11 @@ public class Database {
         PreparedStatement pstmt = this.con.prepareStatement(query);
         pstmt.setString(1, attrValue);
         ResultSet resultSet = pstmt.executeQuery();
-        return resultSet.next();
+        if (!resultSet.next()) {
+            return false;
+        }
+        int count = resultSet.getInt(1);
+        return count > 0;
     }
 
     /**

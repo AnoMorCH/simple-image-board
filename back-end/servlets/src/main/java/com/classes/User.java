@@ -88,7 +88,8 @@ public class User extends Database {
      */
     private int getRoleId(String roleValue) throws SQLException, ClassNotFoundException {
         ResultSet role = this.getObject("authors_role", "value", roleValue);
-        return role.getInt("id");
+        role.next();
+        return role.getInt(1);
     }
 
     /**
