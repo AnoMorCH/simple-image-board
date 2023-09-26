@@ -1,3 +1,9 @@
-/home/anomorch/Desktop/university/7-sem/7-sem-java-project-web/back-end/servlets/src/main/java/com/support/Auth.java
-/home/anomorch/Desktop/university/7-sem/7-sem-java-project-web/back-end/servlets/src/main/java/com/LogInServlet.java
-/home/anomorch/Desktop/university/7-sem/7-sem-java-project-web/back-end/servlets/src/main/java/com/support/Database.java
+/home/anomorch/Desktop/university/7-sem/7-sem-java-project-web/back-end/servlets/src/main/java/com/servlets/IsAuthorized.java
+/home/anomorch/Desktop/university/7-sem/7-sem-java-project-web/back-end/servlets/src/main/java/com/servlets/SingUp.java
+/home/anomorch/Desktop/university/7-sem/7-sem-java-project-web/back-end/servlets/src/main/java/com/classes/User.java
+/home/anomorch/Desktop/university/7-sem/7-sem-java-project-web/back-end/servlets/src/main/java/com/servlets/LogIn.java
+/home/anomorch/Desktop/university/7-sem/7-sem-java-project-web/back-end/servlets/src/main/java/com/classes/Database.java
+/home/anomorch/Desktop/university/7-sem/7-sem-java-project-web/back-end/servlets/src/main/java/com/enums/UserRoles.java
+/home/anomorch/Desktop/university/7-sem/7-sem-java-project-web/back-end/servlets/src/main/java/com/classes/Auth.java
+/home/anomorch/Desktop/university/7-sem/7-sem-java-project-web/back-end/servlets/src/main/java/com/classes/Json.java
+/home/anomorch/Desktop/university/7-sem/7-sem-java-project-web/back-end/servlets/src/main/java/com/servlets/LogOut.java

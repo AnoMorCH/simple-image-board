@@ -1,3 +1,9 @@
-com/support/Auth.class
-com/support/Database.class
-com/LogInServlet.class
+com/servlets/LogIn.class
+com/servlets/SingUp.class
+com/enums/UserRoles.class
+com/classes/Database.class
+com/classes/Json.class
+com/classes/Auth.class
+com/servlets/IsAuthorized.class
+com/servlets/LogOut.class
+com/classes/User.class

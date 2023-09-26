@@ -61,9 +61,11 @@ public class Auth extends User {
      * Log out a user from his or her session.
      * 
      * @param session The current user's session.
+     * @return If a user has been logged out.
      */
-    public void logOut(HttpSession session) {
+    public JSONObject logOut(HttpSession session) {
         session.removeAttribute(this.UNIQUE_USERS_IDENTIFIER);
+        return Json.getBinaryAnswer(true, "");
     }
 
     /**

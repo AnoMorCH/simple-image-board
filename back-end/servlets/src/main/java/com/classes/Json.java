@@ -1,6 +1,11 @@
 package com.classes;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import org.json.JSONObject;
+
+import jakarta.servlet.http.HttpServletResponse;
 
 public class Json {
     private static final int STATUS_OK = 200;
@@ -10,7 +15,7 @@ public class Json {
      * with JSON.
      * 
      * @param isSuccess Is result of a work successful or not?
-     * @param comment 
+     * @param comment
      * @return
      */
     public static JSONObject getBinaryAnswer(boolean isSuccess, String comment) {
@@ -18,5 +23,18 @@ public class Json {
                 .put("status", STATUS_OK)
                 .put("success", isSuccess)
                 .put("comment", comment);
+    }
+
+    /**
+     * Print an answer from a server to a web-browser.
+     * 
+     * @param response A http object to get access to the web-browser.
+     * @param answer   An answer which should be transferred to the web-browser.
+     * @throws IOException
+     */
+    public static void printAnswer(HttpServletResponse response, JSONObject answer) throws IOException {
+        PrintWriter writer = response.getWriter();
+        writer.println(answer.toString(4));
+        writer.close();
     }
 }
