@@ -31,7 +31,7 @@
       <article>
         <div id="headline">Sign Up</div>
         
-        <form action="http://localhost:8080/servlets/sign-up" method="post">
+        <form id="sign-up-form" action="http://localhost:8080/servlets/sign-up" method="post">
           <div>
             <label for="nickname">Nickname</label>
             <input type="text" name="nickname" id="nickname" required>
@@ -46,10 +46,14 @@
             <input type="submit" value="Submit">
           </div>
         </form>
+        
+        <div id="msg"></div>
       </article>
     </section>
 
     <!-- Upload footer automatically using "posthtml-include" plugin.. -->
     <include src="src/support-templates/footer.html"></include>
   </body>
+  
+  <script type="module" src="js/auth/sign-up.js"></script>
 </html>
