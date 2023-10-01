@@ -6,7 +6,9 @@
  * Also, it trims all space characters both on the front-end and back-end.
  */
 
-// TODO. Write what the class below does.
+/**
+ * Validates data provided by a client.
+ */
 export class Validator {
   static #MIN_NICKNAME_LENGTH = 1;
   static #MIN_PASSWORD_LENGTH = 8;

@@ -1,4 +1,6 @@
-// TODO. Write what the class below does.
+/**
+ * Handles showing of a message to a client.
+ */
 export class Msg {
   MSG_TAG_ID = "msg";
   SUCCESS_MSG_COLOR = "green";

@@ -1,7 +1,9 @@
 import { BACK_END_URLS } from "../consts/back-end-urls";
 import "../import/jquery.js"; // import jQuery
 
-// TODO. Write what the class below does.
+/**
+ * Handles the general auth logic.
+ */
 export class Auth {
   /**
    * Sign up a new user.

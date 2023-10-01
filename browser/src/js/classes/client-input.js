@@ -1,4 +1,6 @@
-// TODO. Write what the class below does.
+/**
+ * Handles a client's input making it convenient for codding.
+ */
 export class ClientInput {
   /**
    * Provide clean data from the dirty one.
