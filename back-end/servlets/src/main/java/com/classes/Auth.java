@@ -30,7 +30,7 @@ public class Auth extends User {
             return Json.getBinaryAnswer(false, "Error! There is no such a user.");
         } else if (!this.isPasswordCorrect(nickname, password)) {
             return Json.getBinaryAnswer(false, "Error! The given password is wrong.");
-        }
+        } 
         ResultSet user = this.getCurrent(nickname);
         int userId = user.getInt("id");
         this.writeToSession(session, userId);
@@ -52,6 +52,8 @@ public class Auth extends User {
             throws ClassNotFoundException, SQLException {
         if (this.doesValueExist("author", "nickname", nickname)) {
             return Json.getBinaryAnswer(false, "Error! The user already exists.");
+        } else if (!Validator.isDataOk(nickname, password)) {
+            return Json.getBinaryAnswer(false, "Error! The given data is still invalid.");
         }
         this.createNew(nickname, password);
         return Json.getBinaryAnswer(true, "A user has been created successfully.");
@@ -64,7 +66,7 @@ public class Auth extends User {
      * @return If a user has been logged out.
      */
     public JSONObject logOut(HttpSession session) {
-        session.removeAttribute(this.UNIQUE_USERS_IDENTIFIER);
+        session.removeAttribute(this.UNIQUE_IDENTIFIER);
         return Json.getBinaryAnswer(true, "");
     }
 
