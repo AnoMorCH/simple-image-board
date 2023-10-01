@@ -60,3 +60,8 @@ back-end/servlets/src/main/java/com/classes
 [additional]
 back-end/servlets/src/main/webapp/WEB-INF/web.xml - storage for urls
 ```
+
+2. Sometimes communication between the front-end and the back-end is disturbed because of CORS. In such a case the following should be done:
+
+* Check if CORS allowed inside of `back-end/servlets/src/main/webapp/WEB-INF/web.xml`.
+* Install <a href="https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf">an app which allows using CORS</a> on your browser (a common problem for localhost development).
