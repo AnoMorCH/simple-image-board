@@ -1,11 +1,11 @@
-import { Auth } from "../classes/auth";
-import { Msg } from "../classes/msg";
-import { Validator } from "../classes/validator";
+import { Auth } from "./classes/auth";
+import { Msg } from "./classes/msg";
+import { Validator } from "./classes/validator";
 
 const signUpForm = document.getElementById("sign-up-form");
 
 signUpForm.addEventListener("submit", e => {
-  e.preventDefault(); // prevent page reloading on submit of the form
+  e.preventDefault(); // prevent page from reloading on submit of the form
 
   const nickname = document.getElementById("nickname").value;
   const password = document.getElementById("password").value;
