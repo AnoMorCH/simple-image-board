@@ -1,4 +1,5 @@
 import { Auth } from "./classes/auth";
+import { ClientInput } from "./classes/client-input";
 import { Msg } from "./classes/msg";
 import { Validator } from "./classes/validator";
 
@@ -7,8 +8,11 @@ const signUpForm = document.getElementById("sign-up-form");
 signUpForm.addEventListener("submit", e => {
   e.preventDefault(); // prevent page from reloading on submit of the form
 
-  const nickname = document.getElementById("nickname").value;
-  const password = document.getElementById("password").value;
+  let nickname = document.getElementById("nickname").value;
+  let password = document.getElementById("password").value;
+
+  nickname = ClientInput.getClean(nickname);
+  password = ClientInput.getClean(password);
 
   if (Validator.isDataOk(nickname, password)) {
     const promisedResponse = Auth.signUp(nickname, password);
@@ -17,6 +21,6 @@ signUpForm.addEventListener("submit", e => {
       new Msg(response["success"], response["comment"]).show();
     });
   } else {
-    new Msg(false).show(false);
+    new Msg(false, Validator.getInnerHTMLForInvalidDataMsg()).show();
   }
 });

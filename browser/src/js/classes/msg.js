@@ -1,3 +1,4 @@
+// TODO. Write what the class below does.
 export class Msg {
   MSG_TAG_ID = "msg";
   SUCCESS_MSG_COLOR = "green";
@@ -13,19 +14,15 @@ export class Msg {
    * @param {*} success A status of a message (either success or error).
    * @param {*} innerHTML A innerHTML to be set as the innerHTML of the element.
    */
-  constructor(success, innerHTML = "") {
+  constructor(success, innerHTML) {
     this.success = success;
     this.innerHTML = innerHTML;
   }
 
   /**
    * Show a message to a client.
-   * @param {*} isDataValid If data is invalid, then show a special message.
    */
-  show(isDataValid = true) {
-    if (!isDataValid) {
-      this.#setInnerHTMLWithInvalidDataMessage();
-    }
+  show() {
     this.#setNewColor();
     this.#setInnerText();
   }
@@ -46,15 +43,5 @@ export class Msg {
    */
   #setInnerText() {
     this.element.innerHTML = this.innerHTML;
-  }
-
-  /**
-   * Set inner HTML with invalid data message.
-   */
-  #setInnerHTMLWithInvalidDataMessage() {
-    this.innerHTML =
-      "<div>We're sorry, but your data is invalid.</div>" +
-      "<div>A nickname should have at least 1 character and a password" +
-      " should have at least 8 characters.</div>";
   }
 }
