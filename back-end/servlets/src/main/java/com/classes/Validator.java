@@ -10,6 +10,9 @@ import java.util.regex.Pattern;
  * validation.
  */
 
+/**
+ * Implementation of a validator to check the correctness of data provided by a client.
+ */
 public class Validator {
     private static final int MIN_NICKNAME_LENGTH = 1;
     private static final int MIN_PASSWORD_LENGTH = 8;

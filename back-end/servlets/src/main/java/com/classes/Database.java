@@ -9,6 +9,9 @@ import java.util.Map;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
+/**
+ * Implementation of database related logic.
+ */
 public class Database {
     protected Connection con;
 
@@ -58,7 +61,9 @@ public class Database {
         String query = String.format("SELECT * FROM %s WHERE %s = ?", tableName, attrName);
         PreparedStatement pstmt = this.con.prepareStatement(query);
         pstmt.setString(1, attrValue);
-        return pstmt.executeQuery();
+        ResultSet result = pstmt.executeQuery();
+        result.next(); // fetch the first value from the result
+        return result;
     }
 
     /**

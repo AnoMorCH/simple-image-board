@@ -46,6 +46,10 @@
     <servlet-name>IsAuthorizedServlet</servlet-name>
     <servlet-class>com.servlets.IsAuthorized</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>GetNicknameFromTokenServlet</servlet-name>
+    <servlet-class>com.servlets.GetNicknameFromToken</servlet-class>
+  </servlet>
   
   <servlet-mapping>
     <servlet-name>LogInServlet</servlet-name>
@@ -62,5 +66,9 @@
   <servlet-mapping>
     <servlet-name>IsAuthorizedServlet</servlet-name>
     <url-pattern>/is-authorized</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetNicknameFromTokenServlet</servlet-name>
+    <url-pattern>/get-nickname-from-token</url-pattern>
   </servlet-mapping>
 </web-app>

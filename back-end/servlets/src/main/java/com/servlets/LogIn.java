@@ -19,7 +19,7 @@ public class LogIn extends HttpServlet {
         try {
             String nickname = request.getParameter("nickname");
             String password = request.getParameter("password");
-            answer = (new Auth()).logIn(request.getSession(), nickname, password);
+            answer = (new Auth()).logIn(nickname, password);
         } catch (ClassNotFoundException | SQLException e) {
             answer = Json.getBinaryAnswer(false, e.getMessage());
         }

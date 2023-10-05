@@ -7,6 +7,9 @@ import org.json.JSONObject;
 
 import jakarta.servlet.http.HttpServletResponse;
 
+/**
+ * Implementation of logic related with JSON answers from a server to a client.
+ */
 public class Json {
     private static final int STATUS_OK = 200;
 

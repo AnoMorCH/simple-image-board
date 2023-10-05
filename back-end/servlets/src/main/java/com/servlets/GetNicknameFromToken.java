@@ -13,11 +13,12 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class LogOut extends HttpServlet {
+public class GetNicknameFromToken extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         JSONObject answer;
         try {
-            answer = (new Auth()).logOut(request.getSession());
+            String token = request.getParameter("token");
+            answer = (new Auth()).getNicknameFromToken(token);
         } catch (ClassNotFoundException | SQLException e) {
             answer = Json.getBinaryAnswer(false, e.getMessage());
         }

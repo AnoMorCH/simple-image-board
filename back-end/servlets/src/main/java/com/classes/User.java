@@ -6,12 +6,10 @@ import java.sql.SQLException;
 
 import com.enums.UserRoles;
 
-import jakarta.servlet.http.HttpSession;
-
+/**
+ * Implementation of logic related to a user.
+ */
 public class User extends Database {
-    // A special value used to log in a user and store a current user session.
-    protected final String UNIQUE_IDENTIFIER = "user_id";
-
     User() throws ClassNotFoundException, SQLException {
         super();
     }
@@ -31,30 +29,11 @@ public class User extends Database {
         pstmt.setString(1, nickname);
         pstmt.setString(2, password);
         ResultSet resultSet = pstmt.executeQuery();
-        return resultSet.next();
-    }
-
-    /**
-     * Get a current user from a database.
-     *
-     * @param nickname A unique user's name.
-     * @return The current user.
-     * @throws SQLException
-     * @throws ClassNotFoundException
-     */
-    protected ResultSet getCurrent(String nickname) throws SQLException, ClassNotFoundException {
-        return this.getObject("author", "nickname", nickname);
-    }
-
-    /**
-     * Authorize a user to the current session using his or her unique identifier.
-     * 
-     * @param session               The current user's session.
-     * @param uniqueIdentifierValue A value by which a user is identifier (here this
-     *                              is his or her user id.)
-     */
-    protected void writeToSession(HttpSession session, int uniqueIdentifierValue) {
-        session.setAttribute(this.UNIQUE_IDENTIFIER, uniqueIdentifierValue);
+        if (!resultSet.next()) {
+            return false;
+        }
+        int count = resultSet.getInt(1);
+        return count > 0;
     }
 
     /**
@@ -77,16 +56,6 @@ public class User extends Database {
     }
 
     /**
-     * Check if a user is authorized.
-     *
-     * @param session The current user's session.
-     * @return If a user is authorized.
-     */
-    protected boolean isAuthorized(HttpSession session) {
-        return session.getAttribute(this.UNIQUE_IDENTIFIER) != null;
-    }
-
-    /**
      * Get an identifier of a role based on a given role value.
      * 
      * @param roleValue A role value you want to fetch.
@@ -96,7 +65,6 @@ public class User extends Database {
      */
     private int getRoleId(String roleValue) throws SQLException, ClassNotFoundException {
         ResultSet role = this.getObject("authors_role", "value", roleValue);
-        role.next();
         return role.getInt(1);
     }
 }
