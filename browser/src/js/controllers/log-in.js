@@ -1,9 +1,9 @@
-import { Auth } from "./classes/auth";
-import { ClientInput } from "./classes/client-input";
-import { Msg } from "./classes/msg";
+import { Auth } from "../classes/auth";
+import { ClientInput } from "../classes/client-input";
+import { Msg } from "../classes/msg";
 import Cookies from "js-cookie";
-import { redirect } from "./helper/index";
-import { FRONT_END_URLS } from "./consts/front-end-urls";
+import { redirect } from "../helper/index";
+import { FRONT_END_URLS } from "../consts/front-end-urls";
 
 if (Auth.isAuthorized()) {
   redirect(FRONT_END_URLS["index"]);
