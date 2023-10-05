@@ -50,14 +50,12 @@ A <strong>back-end part</strong> of the project. Is built upon <a link="https://
 
 1. The <strong>logical architecture</strong> is the following:
 ```
-[views]
+[controllers]
 back-end/servlets/src/main/java/com/servlets
 
-[controllers]
-back-end/servlets/src/main/java/com/enums
-back-end/servlets/src/main/java/com/classes
-
 [additional]
+back-end/servlets/src/main/java/com/enums - storage for enums
+back-end/servlets/src/main/java/com/classes - storage for classes
 back-end/servlets/src/main/webapp/WEB-INF/web.xml - storage for urls
 ```
 
