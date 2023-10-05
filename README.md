@@ -32,7 +32,7 @@ can sometimes to lead to a situation when some pages aren't uploaded in spite of
 
 Use the [clause 1](#browser-hints-clause-1) to run the app.
 
-1. Also, running the app directly like this
+3. Also, running the app directly like this
 
 ```bash
 npx parcel browser/src/*.html
@@ -42,6 +42,16 @@ can cause unexpected behavior.
 
 Use the [clause 1](#browser-hints-clause-1) to run the app.
 
+4. The <strong>logical architecture of JS files</strong> is the following (all JS files are located inside of `browser/src/js`):
+
+```
+classes - classes which are used to store inner logic
+consts - constants and storage of front-end urls
+controllers - used to change data of the HTML files
+helper - small additional functions which aren't suitable to store as classes
+import - import of some npm plugins which aren't uploaded automatically
+```
+
 ### 2. back-end
 
 A <strong>back-end part</strong> of the project. Is built upon <a link="https://docs.oracle.com/javaee/5/tutorial/doc/bnafe.html">Java Servlet</a>. The architecture is close to <a link="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">the MVC paradigm</a> (only without models, though).
@@ -49,6 +59,7 @@ A <strong>back-end part</strong> of the project. Is built upon <a link="https://
 #### Hints
 
 1. The <strong>logical architecture</strong> is the following:
+
 ```
 [controllers]
 back-end/servlets/src/main/java/com/servlets
@@ -58,6 +69,8 @@ back-end/servlets/src/main/java/com/enums - storage for enums
 back-end/servlets/src/main/java/com/classes - storage for classes
 back-end/servlets/src/main/webapp/WEB-INF/web.xml - storage for urls
 ```
+
+It is important to note that `[controllers]` are used to give a response to the server when `[additional]` stores only support functionality for `[controllers]`. In other words, all the internal logic is in `[additional]`.
 
 2. Sometimes communication between the front-end and the back-end is disturbed because of CORS. In such a case the following should be done:
 
