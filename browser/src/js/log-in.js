@@ -1,17 +1,17 @@
 import { Auth } from "./classes/auth";
 import { ClientInput } from "./classes/client-input";
 import { Msg } from "./classes/msg";
-import { Validator } from "./classes/validator";
-import { redirect } from "./helper";
+import Cookies from "js-cookie";
+import { redirect } from "./helper/index";
 import { FRONT_END_URLS } from "./consts/front-end-urls";
 
 if (Auth.isAuthorized()) {
   redirect(FRONT_END_URLS["index"]);
 }
 
-const signUpForm = document.getElementById("sign-up-form");
+const logInForm = document.getElementById("log-in-form");
 
-signUpForm.addEventListener("submit", (e) => {
+logInForm.addEventListener("submit", (e) => {
   e.preventDefault(); // prevent page from reloading on submit of the form
 
   let nickname = document.getElementById("nickname").value;
@@ -20,13 +20,14 @@ signUpForm.addEventListener("submit", (e) => {
   nickname = ClientInput.getClean(nickname);
   password = ClientInput.getClean(password);
 
-  if (Validator.isDataOk(nickname, password)) {
-    const promisedResponse = Auth.signUp(nickname, password);
-    promisedResponse.then((rawResponse) => {
-      const response = JSON.parse(rawResponse);
+  const promisedResponse = Auth.logIn(nickname, password);
+  promisedResponse.then((rawResponse) => {
+    const response = JSON.parse(rawResponse);
+    if (response["success"]) {
+      Cookies.set("token", response["comment"]);
+      redirect(FRONT_END_URLS["index"]);
+    } else {
       new Msg(response["success"], response["comment"]).show();
-    });
-  } else {
-    new Msg(false, Validator.getInnerHTMLForInvalidDataMsg()).show();
-  }
+    }
+  });
 });

@@ -15,16 +15,8 @@
   <body>
     <section>
       <nav>
-        <ul>
-          <li>
-            hi, anonymous
-          </li>
-          <li>
-            <a title="are you sure?" href="sign-up.html">sign up</a>
-          </li>
-          <li>
-            <a title="really?" href="log-in.html">log in</a>
-          </li>
+        <ul id="nav-list">
+          <li id="greeting"></li>
         </ul>
       </nav>
 
@@ -77,5 +69,7 @@
 
     <!-- Upload footer automatically using "posthtml-include" plugin.. -->
     <include src="src/support-templates/footer.html"></include>
+
+    <script type="module" src="js/auth-behaviour.js"></script>
   </body>
 </html>
