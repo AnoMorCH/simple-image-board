@@ -65,3 +65,5 @@ back-end/servlets/src/main/webapp/WEB-INF/web.xml - storage for urls
 
 * Check if CORS allowed inside of `back-end/servlets/src/main/webapp/WEB-INF/web.xml`.
 * Install <a href="https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf">an app which allows using CORS</a> on your browser (a common problem for localhost development).
+
+3. Authentication is implemented using <a href="https://jwt.io/">JSON Web Tokens</a>. The implementation is done within of `back-end/servlets/src/main/java/com/classes/JJWT.java`. A nickname is used as the key-value pair which is stored inside of the token. The token is located inside of cookie.
