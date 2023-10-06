@@ -84,7 +84,6 @@ public class Database {
         String query = String.format("SELECT * FROM %s", tableName);
         PreparedStatement pstmt = this.con.prepareStatement(query);
         ResultSet result = pstmt.executeQuery();
-        result.next();
         return result;
     }
 
