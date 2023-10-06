@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
@@ -14,9 +15,11 @@ import java.sql.PreparedStatement;
  */
 public class Database {
     protected Connection con;
+    private Map<String, String[]> tablesAndAttrs;
 
     Database() throws ClassNotFoundException, SQLException {
         con = this.getCon("scherbakov", "anomorch", "anomorch");
+        tablesAndAttrs = this.getTablesAndAttrs();
     }
 
     /**
@@ -29,7 +32,7 @@ public class Database {
      */
     protected boolean doesValueExist(String tableName, String attrName, String attrValue)
             throws SQLException, ClassNotFoundException {
-        if (!this.doesAttrOfTableExist(tableName, attrName)) {
+        if (!this.doesTableExists(tableName) || !this.doesAttrOfTableExist(tableName, attrName)) {
             return false;
         }
         String query = String.format("SELECT count(*) FROM %s WHERE %s = ?", tableName, attrName);
@@ -55,7 +58,7 @@ public class Database {
      */
     protected ResultSet getObject(String tableName, String attrName, String attrValue)
             throws SQLException, ClassNotFoundException {
-        if (!this.doesAttrOfTableExist(tableName, attrName)) {
+        if (!this.doesTableExists(tableName) || !this.doesAttrOfTableExist(tableName, attrName)) {
             return null;
         }
         String query = String.format("SELECT * FROM %s WHERE %s = ?", tableName, attrName);
@@ -67,6 +70,36 @@ public class Database {
     }
 
     /**
+     * Return all rows from a database table.
+     * 
+     * @param tableName A table name from which rows should be fetched.
+     * @return All rows from a database table.
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
+    protected ResultSet getAllObjects(String tableName) throws SQLException, ClassNotFoundException {
+        if (!this.doesTableExists(tableName)) {
+            return null;
+        }
+        String query = String.format("SELECT * FROM %s", tableName);
+        PreparedStatement pstmt = this.con.prepareStatement(query);
+        ResultSet result = pstmt.executeQuery();
+        result.next();
+        return result;
+    }
+
+    /**
+     * Check if a database table exists.
+     * 
+     * @param tableName A table which existence should be checked.
+     * @return If a database table exists.
+     */
+    private boolean doesTableExists(String tableName) {
+        Set<String> tablesNames = this.tablesAndAttrs.keySet();
+        return tablesNames.contains(tableName);
+    }
+
+    /**
      * Check if there is a table of a database and an attribute inside of it.
      * 
      * @param tableName A name of a table you want to check.
@@ -74,8 +107,7 @@ public class Database {
      * @return If there is a table and an attribute.
      */
     private boolean doesAttrOfTableExist(String tableName, String attrName) {
-        Map<String, String[]> tablesAndAttrs = this.getTablesAndAttrs();
-        String[] attrsOfTheTable = tablesAndAttrs.get(tableName);
+        String[] attrsOfTheTable = this.tablesAndAttrs.get(tableName);
         if (attrsOfTheTable == null) {
             return false;
         } else {
@@ -94,10 +126,15 @@ public class Database {
      */
     private Map<String, String[]> getTablesAndAttrs() {
         Map<String, String[]> tablesAndAttrs = new HashMap<String, String[]>();
+
         final String[] authorAttrs = { "id", "nickname", "password", "role_id" };
         final String[] authorsRoleAttrs = { "id", "value" };
+        final String[] topicAttrs = { "id", "name", "description" };
+
         tablesAndAttrs.put("author", authorAttrs);
         tablesAndAttrs.put("authors_role", authorsRoleAttrs);
+        tablesAndAttrs.put("topic", topicAttrs);
+
         return tablesAndAttrs;
     }
 
