@@ -50,6 +50,10 @@
     <servlet-name>GetNicknameFromTokenServlet</servlet-name>
     <servlet-class>com.servlets.GetNicknameFromToken</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>GetAllTopicsServlet</servlet-name>
+    <servlet-class>com.servlets.GetAllTopics</servlet-class>
+  </servlet>
   
   <servlet-mapping>
     <servlet-name>LogInServlet</servlet-name>
@@ -70,5 +74,9 @@
   <servlet-mapping>
     <servlet-name>GetNicknameFromTokenServlet</servlet-name>
     <url-pattern>/get-nickname-from-token</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetAllTopicsServlet</servlet-name>
+    <url-pattern>/get-all-topics</url-pattern>
   </servlet-mapping>
 </web-app>
