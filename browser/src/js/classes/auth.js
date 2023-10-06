@@ -23,17 +23,25 @@ export class Auth {
   }
 
   /**
-   * Log in an existing user.
+   * Send a login request to the server and receive a JSON response..
    * @param {*} nickname A nickname inputted by a client.
    * @param {*} password A password inputted by a client.
    * @returns A promise of response.
    */
-  static async logIn(nickname, password) {
+  static async logInBackend(nickname, password) {
     const data = {
       nickname: nickname,
       password: password,
     };
     return $.post(BACK_END_URLS["log-in-servlet"], data);
+  }
+
+  /**
+   * Log in a user inside of front-end storing a token in cookies.
+   * @param {*} token A token which is used to make a user logged in.
+   */
+  static async logInFrontend(token) {
+    Cookies.set("token", token);
   }
 
   /**

@@ -1,7 +1,6 @@
 import { Auth } from "../classes/auth";
 import { ClientInput } from "../classes/client-input";
 import { Msg } from "../classes/msg";
-import Cookies from "js-cookie";
 import { redirect } from "../helper/index";
 import { FRONT_END_URLS } from "../consts/front-end-urls";
 
@@ -20,14 +19,14 @@ logInForm.addEventListener("submit", (e) => {
   nickname = ClientInput.getClean(nickname);
   password = ClientInput.getClean(password);
 
-  const promisedResponse = Auth.logIn(nickname, password);
-  promisedResponse.then((rawResponse) => {
-    const response = JSON.parse(rawResponse);
-    if (response["success"]) {
-      Cookies.set("token", response["comment"]);
+  const promisedAuthAnswer = Auth.logInBackend(nickname, password);
+  promisedAuthAnswer.then((rawAuthAnswer) => {
+    const authAnswer = JSON.parse(rawAuthAnswer);
+    if (authAnswer["success"]) {
+      Auth.logInFrontend(success["comment"]);
       redirect(FRONT_END_URLS["index"]);
     } else {
-      new Msg(response["success"], response["comment"]).show();
+      new Msg(authAnswer["success"], authAnswer["comment"]).show();
     }
   });
 });
