@@ -2,7 +2,11 @@ package com.classes;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import jakarta.servlet.http.HttpServletResponse;
@@ -12,6 +16,28 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 public class Json {
     private static final int STATUS_OK = 200;
+
+    /**
+     * Convert an object from result set type to JSON type.
+     * 
+     * @param from A result set object from which to perform a conversion.
+     * @return The converted object.
+     * @throws SQLException
+     */
+    public static JSONArray convertTo(ResultSet from) throws SQLException {
+        JSONArray array = new JSONArray();
+        ResultSetMetaData fromMetaData = from.getMetaData();
+        while (from.next()) {
+            int columnsNum = fromMetaData.getColumnCount();
+            JSONObject obj = new JSONObject();
+            for (int i = 1; i <= columnsNum; i++) {
+                String columnName = fromMetaData.getColumnName(i);
+                obj.put(columnName, from.getObject(columnName));
+            }
+            array.put(obj);
+        }
+        return array;
+    }
 
     /**
      * Convert a result from backend to send it to client as an answer encapsulated
