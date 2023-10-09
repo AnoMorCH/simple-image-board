@@ -14,6 +14,19 @@ public class Topic extends Database {
     }
 
     /**
+     * Get a row from the Topic table in the database.
+     * 
+     * @param id An id of a topic.
+     * @return A desired row from the Topic table in the database.
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
+    public JSONArray get(String id) throws SQLException, ClassNotFoundException {
+        ResultSet topic = this.getObject("topic", "id", id);
+        return Json.convertTo(topic);
+    }
+
+    /**
      * Get all rows from the database Topic table.
      * 
      * @return All rows from the database Topic table.
