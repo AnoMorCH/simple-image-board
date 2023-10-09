@@ -54,6 +54,10 @@
     <servlet-name>GetAllTopicsServlet</servlet-name>
     <servlet-class>com.servlets.GetAllTopics</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>GetTopicServlet</servlet-name>
+    <servlet-class>com.servlets.GetTopic</servlet-class>
+  </servlet>
   
   <servlet-mapping>
     <servlet-name>LogInServlet</servlet-name>
@@ -78,5 +82,9 @@
   <servlet-mapping>
     <servlet-name>GetAllTopicsServlet</servlet-name>
     <url-pattern>/get-all-topics</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetTopicServlet</servlet-name>
+    <url-pattern>/get-topic</url-pattern>
   </servlet-mapping>
 </web-app>
