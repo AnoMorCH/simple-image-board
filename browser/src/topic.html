@@ -21,11 +21,11 @@
       </nav>
 
       <article>
-        <div id="headline">Topic Name</div>
+        <div id="headline"></div>
 
         <h3>Description</h3>
 
-        <p>textextexttextextexttextextexttextextexttextextexttextextext</p>
+        <p id="description"></p>
 
         <h3>Discussion</h3>
 
@@ -74,6 +74,7 @@
     <!-- Upload footer automatically using "posthtml-include" plugin.. -->
     <include src="src/support-templates/footer.html"></include>
 
-    <script type="module" src="js/controllers/auth-behaviour.js"></script>
+    <script type="module" src="js/controllers/auth-html.js"></script>
+    <script type="module" src="js/controllers/topic.js"></script>
   </body>
 </html>
