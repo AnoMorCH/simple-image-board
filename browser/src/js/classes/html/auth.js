@@ -1,44 +1,32 @@
-import { Auth } from "./auth";
-import { User } from "./user";
-import { FRONT_END_URLS } from "../consts/front-end-urls";
+import { FRONT_END_URLS } from "../../consts/front-end-urls";
 
 /**
  * Change HTML pages based on the status of authentication.
  */
-export class AuthBehavior extends User {
+export class AuthHtml {
   #navList = document.getElementById("nav-list");
   #greeting = document.getElementById("greeting");
 
   /**
-   * Change the navigation element of an HTML page.
+   * Set the navigation element of an HTML page.
    */
-  async changeNavHtml() {
+  setNavHtml(isAuthorized, nickname) {
     this.#addHomeBtn();
-    if (Auth.isAuthorized()) {
-      this.#setUserNickname();
+    this.#setUserNickname(nickname);
+    if (isAuthorized) {
       this.#addLogOutBtn();
     } else {
-      this.#setAnonymousNickname();
       this.#addSignUpBtn();
       this.#addLogInBtn();
     }
   }
 
   /**
-   * Set a user's nickname based on stored token if a user is logged in.
+   * Set a user's nickname to HTML.
+   * @param {*} value A user's nickname.
    */
-  async #setUserNickname() {
-    const rawNickname = await this.getCurrentNickname();
-    const jsonNickname = JSON.parse(rawNickname);
-    const nickname = jsonNickname["comment"];
-    this.#greeting.innerHTML = `hi, ${nickname}`;
-  }
-
-  /**
-   * Set an anonymous nickname if a user isn't logged in.
-   */
-  async #setAnonymousNickname() {
-    this.#greeting.innerHTML = "hi, anonymous";
+  #setUserNickname(value) {
+    this.#greeting.innerHTML = `hi, ${value}`;
   }
 
   /**
