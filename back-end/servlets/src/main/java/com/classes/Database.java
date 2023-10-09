@@ -65,7 +65,6 @@ public class Database {
         PreparedStatement pstmt = this.con.prepareStatement(query);
         pstmt.setString(1, attrValue);
         ResultSet result = pstmt.executeQuery();
-        result.next(); // fetch the first value from the result
         return result;
     }
 
