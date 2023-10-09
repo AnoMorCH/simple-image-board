@@ -5,4 +5,5 @@ export const BACK_END_URLS = {
   "sign-up-servlet": SERVLETS_URL + "sign-up",
   "get-user-servlet": SERVLETS_URL + "get-nickname-from-token",
   "get-all-topics-servlet": SERVLETS_URL + "get-all-topics",
+  "get-topic-servlet": SERVLETS_URL + "get-topic",
 };
