@@ -23,7 +23,7 @@ logInForm.addEventListener("submit", (e) => {
   promisedAuthAnswer.then((rawAuthAnswer) => {
     const authAnswer = JSON.parse(rawAuthAnswer);
     if (authAnswer["success"]) {
-      Auth.logInFrontend(success["comment"]);
+      Auth.logInFrontend(authAnswer["comment"]);
       redirect(FRONT_END_URLS["index"]);
     } else {
       new Msg(authAnswer["success"], authAnswer["comment"]).show();
