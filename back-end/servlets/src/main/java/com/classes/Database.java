@@ -85,7 +85,7 @@ public class Database {
         ResultSet result = pstmt.executeQuery();
         return result;
     }
-
+    
     /**
      * Check if a database table exists.
      * 
@@ -128,10 +128,12 @@ public class Database {
         final String[] authorAttrs = { "id", "nickname", "password", "role_id" };
         final String[] authorsRoleAttrs = { "id", "value" };
         final String[] topicAttrs = { "id", "name", "description" };
+        final String[] postAttrs = { "id", "author_id", "topic_id", "message", "datetime" };
 
         tablesAndAttrs.put("author", authorAttrs);
         tablesAndAttrs.put("authors_role", authorsRoleAttrs);
         tablesAndAttrs.put("topic", topicAttrs);
+        tablesAndAttrs.put("post", postAttrs);
 
         return tablesAndAttrs;
     }

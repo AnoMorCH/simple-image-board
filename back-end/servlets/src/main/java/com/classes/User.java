@@ -15,6 +15,20 @@ public class User extends Database {
     }
 
     /**
+     * Get a user's nickname.
+     * 
+     * @param id A user's id.
+     * @return A user's nickname.
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
+    protected String getNickname(String id) throws SQLException, ClassNotFoundException {
+        ResultSet user = this.getObject("author", "id", id);
+        user.next();
+        return user.getString("nickname");
+    }
+
+    /**
      * Check if the given login and password are correct.
      * 
      * @param nickname A user's name.
