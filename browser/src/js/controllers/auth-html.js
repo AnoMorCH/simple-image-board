@@ -3,7 +3,8 @@ import { AuthHtml } from "../classes/html/auth";
 import { User } from "../classes/user";
 
 const isAuthorized = Auth.isAuthorized();
-const promisedNickname = User.getNickname(isAuthorized);
+const nicknameToken = User.getNicknameToken();
+const promisedNickname = User.getNickname(isAuthorized, nicknameToken);
 promisedNickname.then((nickname) => {
   new AuthHtml().setNavHtml(isAuthorized, nickname);
 });
