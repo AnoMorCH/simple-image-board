@@ -2,6 +2,7 @@ package com.classes;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -17,15 +18,69 @@ public class Post extends User {
     /**
      * Get a post object.
      * 
-     * @param topicId A topic id of a post.
+     * @param topicId A topic ID of a post.
      * @return A post object.
      * @throws SQLException
      * @throws ClassNotFoundException
      */
     public JSONArray get(String topicId) throws SQLException, ClassNotFoundException {
-        ResultSet unparsedPosts = this.getObject("post", "topic_id", topicId);
+        ResultSet unparsedPosts = this.getSomeObjects("post", "topic_id", topicId);
         JSONArray rawPosts = Json.convertTo(unparsedPosts);
         return addNickname(rawPosts);
+    }
+
+    /**
+     * Delete a post.
+     * 
+     * @param postId An ID of the post.
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
+    public void delete(String postId) throws SQLException, ClassNotFoundException {
+        this.removeObject("post", "id", postId);
+    }
+
+    /**
+     * Check that a user trying to delete a post is the owner of the post.
+     * 
+     * @param userNickname A user's nickname attempting to delete a post.
+     * @param postId       A post which the user tries to delete.
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
+    public boolean isDeletionValid(String userNickname, String postId) throws SQLException, ClassNotFoundException {
+        String authorName = this.getAuthor(postId);
+        return Objects.equals(authorName, userNickname);
+    }
+
+    /**
+     * Get a post's author.
+     * 
+     * @param postId The post ID.
+     * @return A post's author.
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
+    private String getAuthor(String postId) throws SQLException, ClassNotFoundException {
+        int authorId = this.getAuthorId(postId);
+        ResultSet author = this.getSomeObjects("author", "id", Integer.toString(authorId));
+        author.next();
+        return author.getString("nickname");
+    }
+
+    /**
+     * Get an author's ID based on a post.
+     * 
+     * @param postId An ID of the post.
+     * @return An author's ID based on a post.
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
+    private int getAuthorId(String postId) throws SQLException, ClassNotFoundException {
+        ResultSet post = this.getSomeObjects("post", "id", postId);
+        post.next();
+        return post.getInt("author_id");
     }
 
     /**
