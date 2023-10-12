@@ -2,11 +2,11 @@ import { Auth } from "../classes/auth";
 import { ClientInput } from "../classes/client-input";
 import { Msg } from "../classes/msg";
 import { Validator } from "../classes/validator";
-import { redirect } from "../helper/index";
 import { FRONT_END_URLS } from "../consts/front-end-urls";
+import { Html } from "../classes/html";
 
 if (Auth.isAuthorized()) {
-  redirect(FRONT_END_URLS["index"]);
+  Html.redirect(FRONT_END_URLS["index"]);
 }
 
 const signUpForm = document.getElementById("sign-up-form");

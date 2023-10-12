@@ -5,7 +5,7 @@ import { PostHtml } from "../classes/html/post";
 import { Auth } from "../classes/auth";
 import { User } from "../classes/user";
 import { Datetime } from "../classes/datetime";
-import { reload } from "../helper";
+import { Html } from "../classes/html";
 
 const topicId = Topic.getIdFromGetRequest();
 const nicknameToken = User.getNicknameToken();
@@ -50,6 +50,6 @@ function implementPostSendingEvent(nicknameToken) {
     const text = textElement.value;
     const date = new Datetime().get();
     Post.create(nicknameToken, topicId, text, date);
-    reload();
+    Html.reload();
   });
 }

@@ -1,10 +1,10 @@
 import { Auth } from "../classes/auth";
-import { redirect } from "../helper/index";
 import { FRONT_END_URLS } from "../consts/front-end-urls";
+import { Html } from "../classes/html";
 
 if (!Auth.isAuthorized()) {
-  redirect(FRONT_END_URLS["index"]);
+  Html.redirect(FRONT_END_URLS["index"]);
 }
 
 Auth.logOut();
-redirect(FRONT_END_URLS["index"]);
+Html.redirect(FRONT_END_URLS["index"]);

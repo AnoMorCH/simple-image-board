@@ -1,6 +1,6 @@
 import "../../import/jquery.js"; // import jQuery
-import { reload } from "../../helper";
 import { Post } from "../post";
+import { Html } from "../html.js";
 
 /**
  * Change HTML code of pages related to posts.
@@ -40,7 +40,7 @@ export class PostHtml {
       element.addEventListener("click", async (e) => {
         e.preventDefault();
         await Post.delete(element.value, nicknameToken);
-        reload();
+        Html.reload();
       });
     }
   }

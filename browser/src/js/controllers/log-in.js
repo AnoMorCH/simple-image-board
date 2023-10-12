@@ -1,11 +1,11 @@
 import { Auth } from "../classes/auth";
 import { ClientInput } from "../classes/client-input";
 import { Msg } from "../classes/msg";
-import { redirect } from "../helper/index";
 import { FRONT_END_URLS } from "../consts/front-end-urls";
+import { Html } from "../classes/html";
 
 if (Auth.isAuthorized()) {
-  redirect(FRONT_END_URLS["index"]);
+  Html.redirect(FRONT_END_URLS["index"]);
 }
 
 const logInForm = document.getElementById("log-in-form");
@@ -24,7 +24,7 @@ logInForm.addEventListener("submit", (e) => {
     const authAnswer = JSON.parse(rawAuthAnswer);
     if (authAnswer["success"]) {
       Auth.logInFrontend(authAnswer["comment"]);
-      redirect(FRONT_END_URLS["index"]);
+      Html.redirect(FRONT_END_URLS["index"]);
     } else {
       new Msg(authAnswer["success"], authAnswer["comment"]).show();
     }
