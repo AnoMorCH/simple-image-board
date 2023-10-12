@@ -10,8 +10,22 @@ import com.enums.UserRoles;
  * Implementation of logic related to a user.
  */
 public class User extends Database {
-    User() throws ClassNotFoundException, SQLException {
+    public User() throws ClassNotFoundException, SQLException {
         super();
+    }
+
+    /**
+     * Get a user's ID by their nickname.
+     * 
+     * @param nickname A user's nickname.
+     * @return A user's ID by their nickname.
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
+    public int getId(String nickname) throws SQLException, ClassNotFoundException {
+        ResultSet user = this.getSomeObjects("author", "nickname", nickname);
+        user.next();
+        return user.getInt("id");
     }
 
     /**
