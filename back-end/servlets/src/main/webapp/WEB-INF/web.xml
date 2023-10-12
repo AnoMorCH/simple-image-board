@@ -66,6 +66,10 @@
     <servlet-name>RemovePostServlet</servlet-name>
     <servlet-class>com.servlets.RemovePost</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>CreatePostServlet</servlet-name>
+    <servlet-class>com.servlets.CreatePost</servlet-class>
+  </servlet>
   
   <servlet-mapping>
     <servlet-name>LogInServlet</servlet-name>
@@ -102,5 +106,9 @@
   <servlet-mapping>
     <servlet-name>RemovePostServlet</servlet-name>
     <url-pattern>/remove-post</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CreatePostServlet</servlet-name>
+    <url-pattern>/create-post</url-pattern>
   </servlet-mapping>
 </web-app>

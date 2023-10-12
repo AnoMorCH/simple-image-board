@@ -1,7 +1,11 @@
 package com.classes;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.sql.Types;
+import java.text.ParseException;
 import java.util.Objects;
 
 import org.json.JSONArray;
@@ -13,6 +17,31 @@ import org.json.JSONObject;
 public class Post extends User {
     public Post() throws ClassNotFoundException, SQLException {
         super();
+    }
+
+    /**
+     * Create a post.
+     * 
+     * @param authorId ID of the post author.
+     * @param topicId  ID of the post topic.
+     * @param message  Message of the post.
+     * @param datetime Date and time of the post creation.
+     * @throws SQLException
+     * @throws ParseException
+     */
+    public void create(Integer authorId, int topicId, String message, Timestamp datetime)
+            throws SQLException, ParseException {
+        String query = "INSERT post (author_id, topic_id, message, datetime) VALUES (?, ?, ?, ?)";
+        PreparedStatement pstmt = this.con.prepareStatement(query);
+        if (authorId == null) {
+            pstmt.setNull(1, Types.INTEGER);
+        } else {
+            pstmt.setInt(1, authorId);
+        }
+        pstmt.setInt(2, topicId);
+        pstmt.setString(3, message);
+        pstmt.setTimestamp(4, datetime);
+        pstmt.execute();
     }
 
     /**
