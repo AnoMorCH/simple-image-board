@@ -8,4 +8,5 @@ export const BACK_END_URLS = {
   "get-topic-servlet": SERVLETS_URL + "get-topic",
   "get-posts-of-topic-servlet": SERVLETS_URL + "get-posts-of-topic",
   "remove-post-servlet": SERVLETS_URL + "remove-post",
+  "create-post-servlet": SERVLETS_URL + "create-post",
 };

@@ -16,6 +16,23 @@ export class Post {
   }
 
   /**
+   * Send a request to create a post.
+   * @param {*} nicknameToken An authorized user's nickname token.
+   * @param {*} topicId An ID of a topic where a post should be created.
+   * @param {*} message A post message.
+   * @param {*} datetime A date and time of post creation.
+   */
+  static async create(nicknameToken, topicId, message, datetime) {
+    const data = {
+      "nickname-token": nicknameToken,
+      "topic-id": topicId,
+      message: message,
+      datetime: datetime,
+    };
+    $.get(BACK_END_URLS["create-post-servlet"], data);
+  }
+
+  /**
    * Delete a post.
    * @param {*} id The post ID.
    * @param {*} nicknameToken A authorized user nickname token.
