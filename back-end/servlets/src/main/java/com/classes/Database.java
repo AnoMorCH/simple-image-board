@@ -61,8 +61,7 @@ public class Database {
             String query = String.format("DELETE FROM %s WHERE %s = ?", tableName, attrName);
             PreparedStatement pstmt = this.con.prepareStatement(query);
             pstmt.setString(1, attrValue);
-            ResultSet resultSet = pstmt.executeQuery();
-            resultSet.next();
+            pstmt.execute();
         }
     }
 
