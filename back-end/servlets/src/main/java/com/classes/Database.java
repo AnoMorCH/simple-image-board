@@ -47,6 +47,26 @@ public class Database {
     }
 
     /**
+     * Remove an object from a database table.
+     *
+     * @param tableName A name of the table.
+     * @param attrName  A name of the table attribute.
+     * @param attrValue A value of the attribute.
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
+    protected void removeObject(String tableName, String attrName, String attrValue)
+            throws SQLException, ClassNotFoundException {
+        if (this.doesTableExists(tableName) || this.doesAttrOfTableExist(tableName, attrName)) {
+            String query = String.format("DELETE FROM %s WHERE %s = ?", tableName, attrName);
+            PreparedStatement pstmt = this.con.prepareStatement(query);
+            pstmt.setString(1, attrValue);
+            ResultSet resultSet = pstmt.executeQuery();
+            resultSet.next();
+        }
+    }
+
+    /**
      * Return an object from a database based on given data.
      * 
      * @param tableName A table name to fetch an object from.
@@ -56,7 +76,7 @@ public class Database {
      * @throws SQLException
      * @throws ClassNotFoundException
      */
-    protected ResultSet getObject(String tableName, String attrName, String attrValue)
+    protected ResultSet getSomeObjects(String tableName, String attrName, String attrValue)
             throws SQLException, ClassNotFoundException {
         if (!this.doesTableExists(tableName) || !this.doesAttrOfTableExist(tableName, attrName)) {
             return null;
@@ -85,7 +105,7 @@ public class Database {
         ResultSet result = pstmt.executeQuery();
         return result;
     }
-    
+
     /**
      * Check if a database table exists.
      * 
