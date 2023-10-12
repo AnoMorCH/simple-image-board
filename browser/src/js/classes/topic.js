@@ -11,9 +11,7 @@ export class Topic {
    * @returns A promise of a topic object.
    */
   static async getPromise(id) {
-    const data = {
-      id: id,
-    };
+    const data = { id: id };
     return $.get(BACK_END_URLS["get-topic-servlet"], data);
   }
 
