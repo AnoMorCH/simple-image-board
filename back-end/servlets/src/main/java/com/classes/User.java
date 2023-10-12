@@ -17,13 +17,13 @@ public class User extends Database {
     /**
      * Get a user's nickname.
      * 
-     * @param id A user's id.
+     * @param id A user's ID.
      * @return A user's nickname.
      * @throws SQLException
      * @throws ClassNotFoundException
      */
     protected String getNickname(String id) throws SQLException, ClassNotFoundException {
-        ResultSet user = this.getObject("author", "id", id);
+        ResultSet user = this.getSomeObjects("author", "id", id);
         user.next();
         return user.getString("nickname");
     }
@@ -70,7 +70,7 @@ public class User extends Database {
     }
 
     /**
-     * Get an identifier of a role based on a given role value.
+     * Get an ID of a role based on a given role value.
      * 
      * @param roleValue A role value you want to fetch.
      * @return A wanted role value identifier.
@@ -78,7 +78,7 @@ public class User extends Database {
      * @throws ClassNotFoundException
      */
     private int getRoleId(String roleValue) throws SQLException, ClassNotFoundException {
-        ResultSet resultSet = this.getObject("authors_role", "value", roleValue);
+        ResultSet resultSet = this.getSomeObjects("authors_role", "value", roleValue);
         resultSet.next();
         return resultSet.getInt(1);
     }
