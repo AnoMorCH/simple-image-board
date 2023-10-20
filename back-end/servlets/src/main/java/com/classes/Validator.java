@@ -35,7 +35,7 @@ public class Validator {
      * @return If a nickname is valid.
      */
     private static boolean isNicknameOk(String value) {
-        return value.length() > MIN_NICKNAME_LENGTH;
+        return value.length() >= MIN_NICKNAME_LENGTH;
     }
 
     /**
@@ -45,7 +45,7 @@ public class Validator {
      * @return If a password is valid.
      */
     private static boolean isPasswordOk(String value) {
-        return value.length() > MIN_PASSWORD_LENGTH
+        return value.length() >= MIN_PASSWORD_LENGTH
                 && hasOnlyEngLettersAndNumbers(value);
     }
 
