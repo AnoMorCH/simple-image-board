@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>#talkwithme</title>
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/tacit-css.min.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" /> 
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" />
+    <link rel="manifest" href="favicon/site.webmanifest" />
+  </head>
+
+  <body>
+    <section>
+      <nav>
+        <ul id="nav-list">
+          <li id="greeting"></li>
+        </ul>
+      </nav>
+
+      <article>
+        <div id="headline">Talk With Me</div>
+
+        <p>
+          <strong>Talk With Me</strong>
+          is a
+          <mark>
+            place where you can discuss everything you want with other people
+            without fear of censorship or condemnation</mark
+          >
+          as there is no moderation and everything can be posted anonymously.
+          However, you can also log in if you want to write something publically
+          and edit or delete your posts.
+        </p>
+
+        <p>
+          Below you will see a lot of different topics you can dive in. If you
+          want to add more of them,
+          <a target="_blank" href="mailto:morozovantonaleksandrovich@gmail.com">
+            please let us note</a
+          >.
+        </p>
+
+        <p>
+          Feel free to write whatever you want.
+          <mark>Just enjoy it!</mark>
+        </p>
+
+        <h3>Topics</h3>
+
+        <ul id="topics"></ul>
+      </article>
+    </section>
+
+    <!-- Upload footer automatically using "posthtml-include" plugin.. -->
+    <include src="src/support-templates/footer.html"></include>
+
+    <script type="module" src="js/controllers/auth-html.js"></script>
+    <script type="module" src="js/controllers/index.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.5/js.cookie.min.js" integrity="sha512-nlp9/l96/EpjYBx7EP7pGASVXNe80hGhYAUrjeXnu/fyF5Py0/RXav4BBNs7n5Hx1WFhOEOWSAVjGeC3oKxDVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  </body>
+</html>

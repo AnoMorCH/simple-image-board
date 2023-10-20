@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>#talkwithme</title>
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/tacit-css.min.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" />
+    <link rel="manifest" href="favicon/site.webmanifest" />
+  </head>
+
+  <body>
+    <section>
+      <nav>
+        <ul id="nav-list">
+          <li id="greeting">hi, anonymous</li>
+        </ul>
+      </nav>
+
+      <article>
+        <div id="headline">Log In</div>
+
+        <form id="log-in-form" action="" method="post">
+          <div>
+            <label for="nickname">Nickname</label>
+            <input type="text" name="nickname" id="nickname" required />
+          </div>
+
+          <div>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" required />
+          </div>
+
+          <div>
+            <input type="submit" value="Submit" />
+          </div>
+        </form>
+        
+        <div id="msg"></div>
+      </article>
+    </section>
+
+    <!-- Upload footer automatically using "posthtml-include" plugin.. -->
+    <include src="src/support-templates/footer.html"></include>
+
+    <script type="module" src="js/controllers/auth-html.js"></script>
+    <script type="module" src="js/controllers/log-in.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.5/js.cookie.min.js" integrity="sha512-nlp9/l96/EpjYBx7EP7pGASVXNe80hGhYAUrjeXnu/fyF5Py0/RXav4BBNs7n5Hx1WFhOEOWSAVjGeC3oKxDVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>#talkwithme</title>
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/tacit-css.min.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" /> 
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" />
+    <link rel="manifest" href="favicon/site.webmanifest" />
+  </head>
+
+  <body>
+    <section>
+      <nav>
+        <ul id="nav-list">
+          <li id="greeting"></li>
+        </ul>
+      </nav>
+
+      <article>
+        <div id="headline"></div>
+
+        <h3>Description</h3>
+
+        <p id="description"></p>
+
+        <h3>Discussion</h3>
+
+        <div id="posts">
+          <!-- A pattern to create a post. -->
+          <!-- <div class="post">
+            <div>
+              <strong>Ivanov</strong>
+              <span>#000001</span>
+              <span>01/01/01</span>
+              <span>23:45</span>
+            </div>
+            
+            <div>
+              <span>></span>
+              <span>text text text text</span>
+            </div>
+          </div> -->
+        </div>
+        
+        <form action="" method="get" id="send-post-form">
+          <h3>Leave your opinion</h3>
+
+          <div>
+            <input type="text" name="post-text" id="post-text" required>
+          </div>
+          
+          <div>
+            <input type="submit" value="Submit">
+          </div>
+        </form>
+      </article>
+    </section>
+
+    <!-- Upload footer automatically using "posthtml-include" plugin.. -->
+    <include src="src/support-templates/footer.html"></include>
+
+    <script type="module" src="js/controllers/auth-html.js"></script>
+    <script type="module" src="js/controllers/topic.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.5/js.cookie.min.js" integrity="sha512-nlp9/l96/EpjYBx7EP7pGASVXNe80hGhYAUrjeXnu/fyF5Py0/RXav4BBNs7n5Hx1WFhOEOWSAVjGeC3oKxDVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  </body>
+</html>
