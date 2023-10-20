@@ -37,7 +37,6 @@ public class Auth extends User {
     /**
      * Sign up a user to the system if the one doesn't already exist.
      * 
-     * @param session  A current user's session.
      * @param nickname A user's name.
      * @param password A user's password.
      * @return A JSON response notifying a client whether a user was created
@@ -45,7 +44,7 @@ public class Auth extends User {
      * @throws ClassNotFoundException
      * @throws SQLException
      */
-    public JSONObject signUp(HttpSession session, String nickname, String password)
+    public JSONObject signUp(String nickname, String password)
             throws ClassNotFoundException, SQLException {
         if (this.doesValueExist("author", "nickname", nickname)) {
             return Json.getBinaryAnswer(false, "Error! The user already exists.");
