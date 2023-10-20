@@ -78,3 +78,10 @@ It is important to note that `[controllers]` are used to give a response to the 
 * Install <a href="https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf">an app which allows using CORS</a> on your browser (a common problem for localhost development).
 
 3. Authentication is implemented using <a href="https://jwt.io/">JSON Web Tokens</a>. The implementation is done within of `back-end/servlets/src/main/java/com/classes/JJWT.java`. A nickname is used as the key-value pair which is stored inside of the token. The token is located inside of cookie.
+
+### 3. android 
+<strong>An android mobile part of the [browser](#1-browser)</strong> implemented with <a href="https://cordova.apache.org/">Cordova</a>. Mostly, just copy-paste of the browser with the following differences:
+1. Uses CDN instead of Parcel.JS as it's hard to use npm plugins inside of Cordova.
+2. Uses full references for JS files (added `.js` at the end of every JS import).
+3. Uses <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">localStorage</a> instead of Cookies as the latter isn't supported on android apps.
+4. Uses direct links to HTML files instead of URLs.
